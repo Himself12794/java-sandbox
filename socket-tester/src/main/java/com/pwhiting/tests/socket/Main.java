@@ -35,18 +35,20 @@ public class Main<S> implements Runnable {
 	
 	public static void main(String[] args) throws Exception {
 		
-		Main<String> main = new Main<String>();
+		Main<Integer> main = new Main<Integer>();
 		main.run();
 		
-		main.addSupplier(() -> "Book");
-		main.addSupplier(() -> "Cupcake"); 
-		main.addSupplier(() -> "Philip"); 
+		//main.addSupplier(() -> "Book".length());
+		//main.addSupplier(() -> "Cupcake".length()); 
+		//main.addSupplier(() -> "Philip".length()); 
 		
-		IntStream.range(0, 5).forEach(i -> {
-			main.addSupplier(genRandomString(10));
+		/*IntStream.range(0, 5).forEach(i -> {
+			main.addSupplier(genRandomString(10).length());
 			sleep(1000);
-		});
+		});*/
 		
+		Random rand = new Random();
+		IntStream.range(0, 10).map(i -> rand.nextInt()).forEach(main::addSupplier);
 	}
 	
 	public static String genRandomString(int length) {

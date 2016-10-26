@@ -27,8 +27,8 @@ public class ConsumerService<S> implements Runnable {
 			stream = new ObjectInputStream(client.getInputStream());
 			while (true) {
 				try {
-				S obj = (S) stream.readObject();
-				consumer.accept(obj);
+					S obj = (S) stream.readObject();
+					consumer.accept(obj);
 				} catch (EOFException e) {}
 			}
 			
